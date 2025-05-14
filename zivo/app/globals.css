@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "leaflet/dist/leaflet.css";
+
+@layer base {
+  body {
+    font-family: var(--font-outfit), sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700; /* Bold for headings */
+  }
+
+  p,
+  span,
+  div {
+    font-weight: 400; /* Regular for normal text */
+  }
+
+  .text-light {
+    font-weight: 300; /* Light for secondary text */
+  }
+
+  .text-thin {
+    font-weight: 100; /* Thin for tertiary text */
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 198 68% 45%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 198 68% 45%;
+
+    --radius: 0.75rem;
+
+    /* Status colors */
+    --status-pending: 45 100% 85%;
+    --status-pending-foreground: 45 100% 25%;
+    --status-confirmed: 142 70% 85%;
+    --status-confirmed-foreground: 142 70% 25%;
+    --status-cancelled: 0 84% 85%;
+    --status-cancelled-foreground: 0 84% 25%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 198 68% 45%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 198 68% 45%;
+
+    /* Status colors - darker versions for dark mode */
+    --status-pending: 45 70% 50%;
+    --status-pending-foreground: 45 100% 95%;
+    --status-confirmed: 142 50% 50%;
+    --status-confirmed-foreground: 142 70% 95%;
+    --status-cancelled: 0 70% 50%;
+    --status-cancelled-foreground: 0 84% 95%;
+
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 199 68% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 32% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 32% 17%;
+    --sidebar-ring: 199 68% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image: linear-gradient(to bottom right, #f8fafc, #f1f5f9);
+    min-height: 100vh;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Add custom utility classes for status badges */
+@layer utilities {
+  .status-pending {
+    background-color: hsl(var(--status-pending));
+    color: hsl(var(--status-pending-foreground));
+  }
+
+  .status-confirmed {
+    background-color: hsl(var(--status-confirmed));
+    color: hsl(var(--status-confirmed-foreground));
+  }
+
+  .status-cancelled {
+    background-color: hsl(var(--status-cancelled));
+    color: hsl(var(--status-cancelled-foreground));
+  }
+
+  /* Add soft shadow utility */
+  .shadow-soft {
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-soft-lg {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05),
+      0 8px 10px -6px rgba(0, 0, 0, 0.02);
+  }
+
+  /* Add breathing space utility */
+  .space-y-breathing > * + * {
+    margin-top: 1.75rem;
+  }
+
+  .space-x-breathing > * + * {
+    margin-left: 1.75rem;
+  }
+}
+
+@layer components {
+  .space-y-breathing > * + * {
+    margin-top: 1.5rem;
+  }
+
+  .space-x-breathing > * + * {
+    margin-left: 1.5rem;
+  }
+
+  .card-hover {
+    @apply transition-shadow duration-250 hover:shadow-soft-hover;
+  }
+
+  .input-focus {
+    @apply focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  .btn-hover {
+    @apply hover:opacity-90 active:opacity-80 transition-all duration-250;
+  }
+
+  /* Pattern background for auth pages */
+  .bg-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
