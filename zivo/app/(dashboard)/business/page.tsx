@@ -292,20 +292,24 @@ export default function BusinessPage() {
                     <SelectValue placeholder="Select business type" />
                   </SelectTrigger>
                   <SelectContent className="animate-in fade-in-50 zoom-in-95 duration-100">
-                    <SelectItem value="dfe8118a-4b96-4366-839e-899ff802fba8">
-                      Hairdresser
-                    </SelectItem>
-                    <SelectItem value="ed90a82e-0041-4414-8772-d2aabf15f4cb">
-                      Skin Care
-                    </SelectItem>
-                    <SelectItem value="28ec23f3-73c0-47fb-a72c-dc94da77dacf">
-                      Day SPA
-                    </SelectItem>
-                    <SelectItem value="58858f87-0060-4869-a83c-c838cd1c1e29">
-                      Pet Service
-                    </SelectItem>
-                    <SelectItem value="5">Dövme & Piercing</SelectItem>
-                    <SelectItem value="6">Other</SelectItem>
+                      <SelectItem value="17e8c196-d4b9-4949-806d-d093900a749f">
+                        Hair Salon
+                      </SelectItem>
+                      <SelectItem value="ab25e866-1922-45ef-8caa-fc0116175a3c">
+                        Spa & Wellness
+                      </SelectItem>
+                      <SelectItem value="46afc6d0-95ed-4b92-8047-3daed9f7472e">
+                        Beauty Salon
+                      </SelectItem>
+                      <SelectItem value="9a0432c8-098f-4339-a743-6bbf7ec07db3">
+                        Nail Studio
+                      </SelectItem>
+                      <SelectItem value="cd3048d1-1aa4-456d-b1b8-b497b9efd761">
+                        Tattoo Studio
+                      </SelectItem>
+                      <SelectItem value="9acf7844-ff2e-4453-a6ce-9e0cfea4d583">
+                        Skin Care
+                      </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
